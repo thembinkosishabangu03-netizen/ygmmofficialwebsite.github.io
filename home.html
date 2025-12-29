@@ -1,0 +1,3301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young Gospel Ministers Movement</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.5s, color 0.5s, border-color 0.5s, transform 0.5s, opacity 0.5s;
+        }
+
+        :root {
+            --primary: #2c5e8c;
+            --secondary: #d4a017;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --accent: #8a2be2;
+            --success: #28a745;
+            --error: #dc3545;
+            --facebook: #1877f2;
+            --youtube: #ff0000;
+            --tiktok: #000000;
+            --background: #f5f5f5;
+            --card-bg: white;
+            --text: #343a40;
+            --text-light: #666;
+            --border: #ddd;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--background);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--secondary);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        nav a.active {
+            color: var(--secondary);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary);
+            animation: expandWidth 0.5s ease-out;
+        }
+
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Marquee Announcement */
+        .marquee-container {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 10px 0;
+            overflow: hidden;
+            position: relative;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 25s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .marquee-item {
+            padding: 0 50px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .marquee-item i {
+            color: var(--secondary);
+        }
+
+        /* Main Content Styles */
+        main {
+            min-height: calc(100vh - 200px);
+            padding: 2rem 0;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeInUp 0.7s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--secondary);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .page-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            animation: bounceIn 1s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .page-header p {
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Home Page */
+        .hero {
+            background: linear-gradient(rgba(44, 94, 140, 0.85), rgba(44, 94, 140, 0.9)), url('https://images.unsplash.com/photo-1518834103328-93d45986dce1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            animation: fadeInScale 1s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            animation: slideInFromLeft 1s ease-out;
+        }
+
+        @keyframes slideInFromLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+            animation: slideInFromRight 1s ease-out 0.2s backwards;
+        }
+
+        @keyframes slideInFromRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            animation: fadeIn 1s ease-out 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            background-color: #b8860b;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px var(--shadow);
+        }
+
+        .cta-button.secondary {
+            background-color: var(--primary);
+        }
+
+        .cta-button.secondary:hover {
+            background-color: #1e4569;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.3s; }
+        .feature-card:nth-child(3) { animation-delay: 0.5s; }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            transition: transform 0.5s;
+        }
+
+        .feature-card:hover i {
+            transform: rotate(360deg);
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+        }
+
+        /* About Page */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: transform 0.5s;
+        }
+
+        .about-img:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.1);
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .mission, .vision {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.5s;
+        }
+
+        .mission:hover, .vision:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .mission h3, .vision h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Committee Members Styles */
+        .committee-section {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--secondary);
+        }
+        
+        .committee-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .committee-header h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* View Toggle */
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background: var(--card-bg);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 3px 10px var(--shadow);
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid var(--border);
+        }
+        
+        .toggle-label {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        .toggle-switch input:checked + .toggle-slider {
+            background-color: var(--secondary);
+        }
+        
+        .toggle-switch input:checked + .toggle-slider:before {
+            transform: translateX(30px);
+        }
+        
+        .toggle-icons {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+        
+        .toggle-icons i {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .toggle-icons .active-icon {
+            color: var(--secondary);
+        }
+        
+        /* Committee Grid */
+        .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .committee-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            padding-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .committee-card:nth-child(1) { animation-delay: 0.1s; }
+        .committee-card:nth-child(2) { animation-delay: 0.2s; }
+        .committee-card:nth-child(3) { animation-delay: 0.3s; }
+        .committee-card:nth-child(4) { animation-delay: 0.4s; }
+        .committee-card:nth-child(5) { animation-delay: 0.5s; }
+        .committee-card:nth-child(6) { animation-delay: 0.6s; }
+        .committee-card:nth-child(7) { animation-delay: 0.7s; }
+        .committee-card:nth-child(8) { animation-delay: 0.8s; }
+        .committee-card:nth-child(9) { animation-delay: 0.9s; }
+        
+        .committee-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+        
+        .member-photo {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .member-photo.placeholder {
+            background: linear-gradient(135deg, var(--light) 0%, var(--card-bg) 100%);
+        }
+        
+        .placeholder-icon {
+            font-size: 4rem;
+            color: var(--border);
+            transition: transform 0.5s;
+        }
+
+        .committee-card:hover .placeholder-icon {
+            transform: scale(1.2);
+        }
+        
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .committee-card:hover .member-photo img {
+            transform: scale(1.1);
+        }
+        
+        .member-details {
+            padding: 1.5rem 1.5rem 0;
+        }
+        
+        .member-name {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .member-role {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+        
+        .member-bio {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .member-contact {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .contact-icon:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px) scale(1.1);
+        }
+        
+        /* Committee Structure */
+        .committee-structure {
+            background: linear-gradient(135deg, var(--light) 0%, var(--card-bg) 100%);
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+            box-shadow: 0 5px 15px var(--shadow);
+            border: 1px solid var(--border);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .structure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .department {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.5s;
+        }
+
+        .department:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow);
+        }
+        
+        .department h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .department ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .department li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            transition: transform 0.3s;
+        }
+
+        .department li:hover {
+            transform: translateX(10px);
+            color: var(--primary);
+        }
+        
+        .department li:before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .committee-cta {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            animation: pulse 2s infinite;
+        }
+        
+        .committee-cta h4 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .placeholder-instructions {
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-radius: 5px;
+            border: 1px solid var(--border);
+            animation: slideInFromRight 0.8s ease-out;
+        }
+        
+        .placeholder-instructions h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .placeholder-instructions ul {
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .placeholder-instructions li {
+            margin-bottom: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Social Media Pages */
+        .social-media-section {
+            margin-top: 2rem;
+        }
+        
+        .social-platforms {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .platform-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: all 0.5s;
+            text-align: center;
+            border: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .platform-card:nth-child(1) { animation-delay: 0.1s; }
+        .platform-card:nth-child(2) { animation-delay: 0.3s; }
+        .platform-card:nth-child(3) { animation-delay: 0.5s; }
+        
+        .platform-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .platform-header {
+            padding: 2rem;
+            color: white;
+        }
+        
+        .platform-header.facebook {
+            background-color: var(--facebook);
+        }
+        
+        .platform-header.youtube {
+            background-color: var(--youtube);
+        }
+        
+        .platform-header.tiktok {
+            background: linear-gradient(to right, #69C9D0, #EE1D52);
+        }
+        
+        .platform-header i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .platform-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .platform-content {
+            padding: 2rem;
+        }
+        
+        .platform-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+        
+        .social-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat {
+            padding: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .platform-card:hover .stat {
+            transform: scale(1.1);
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .social-links-container {
+            margin-top: 2rem;
+        }
+        
+        .social-link-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s;
+            color: white;
+        }
+        
+        .social-link-btn i {
+            margin-right: 10px;
+        }
+        
+        .social-link-btn.facebook-btn {
+            background-color: var(--facebook);
+        }
+        
+        .social-link-btn.youtube-btn {
+            background-color: var(--youtube);
+        }
+        
+        .social-link-btn.tiktok-btn {
+            background-color: var(--tiktok);
+        }
+        
+        .social-link-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cross-platform-section {
+            background: linear-gradient(135deg, var(--light) 0%, var(--card-bg) 100%);
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+            box-shadow: 0 5px 15px var(--shadow);
+            text-align: center;
+            border: 1px solid var(--border);
+            animation: fadeInScale 1s ease-out;
+        }
+        
+        .cross-platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .cross-platform-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.5s;
+        }
+
+        .cross-platform-card:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+        
+        .cross-platform-card h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Events Page */
+        .events-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: all 0.5s;
+            border: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .event-card:nth-child(1) { animation-delay: 0.1s; }
+        .event-card:nth-child(2) { animation-delay: 0.3s; }
+        .event-card:nth-child(3) { animation-delay: 0.5s; }
+
+        .event-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .event-date {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.5s;
+        }
+
+        .event-card:hover .event-date {
+            background-color: var(--secondary);
+        }
+
+        .event-date .day {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .event-details {
+            padding: 1.5rem;
+        }
+
+        .event-details h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .event-card:hover .event-details h3 {
+            color: var(--secondary);
+        }
+
+        .event-details .location {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .event-details p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        /* Resources Page */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .resource-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.5s;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .resource-card:nth-child(1) { animation-delay: 0.1s; }
+        .resource-card:nth-child(2) { animation-delay: 0.3s; }
+        .resource-card:nth-child(3) { animation-delay: 0.5s; }
+
+        .resource-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .resource-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: transform 0.5s;
+        }
+
+        .resource-card:hover i {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .resource-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .resource-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .resource-card ul {
+            list-style: none;
+            text-align: left;
+            margin-top: 1rem;
+        }
+
+        .resource-card li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-light);
+            transition: transform 0.3s;
+        }
+
+        .resource-card:hover li {
+            transform: translateX(5px);
+        }
+
+        .resource-card li:before {
+            content: "✓";
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Enhanced Registration Page */
+        .registration-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .registration-info {
+            background-color: var(--primary);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            animation: slideInFromLeft 0.8s ease-out;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .registration-info h3 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            font-size: 1.8rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(212, 160, 23, 0.3);
+        }
+
+        .registration-info p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .benefit-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .benefit-list li {
+            margin-bottom: 1.2rem;
+            padding-left: 2.2rem;
+            position: relative;
+            color: rgba(255, 255, 255, 0.95);
+            transition: all 0.3s;
+            line-height: 1.5;
+        }
+
+        .registration-info:hover .benefit-list li {
+            transform: translateX(5px);
+        }
+
+        .benefit-list li:before {
+            content: "✓";
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.3rem;
+            background: rgba(212, 160, 23, 0.1);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .free-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), #ffcc00);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+            box-shadow: 0 5px 15px rgba(212, 160, 23, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .registration-form-container {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow);
+            border: 1px solid var(--border);
+            animation: slideInFromRight 0.8s ease-out;
+        }
+
+        .registration-form-container h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--secondary);
+            text-align: center;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-header h4 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .form-section {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-title i {
+            color: var(--secondary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .required:after {
+            content: " *";
+            color: var(--error);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background-color: var(--card-bg);
+            color: var(--text);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(44, 94, 140, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-error {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            display: none;
+            animation: shake 0.5s ease-in-out;
+            font-weight: 500;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .form-success {
+            background: linear-gradient(135deg, var(--success), #20c997);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: none;
+            animation: fadeInScale 0.5s ease-out;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .form-success.show {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .form-success h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-checkbox input {
+            width: auto;
+            margin-top: 0.3rem;
+            transform: scale(1.2);
+        }
+
+        .form-checkbox label {
+            font-weight: normal;
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .submit-button {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--secondary), #ffcc00);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            letter-spacing: 0.5px;
+            margin-top: 2rem;
+        }
+
+        .submit-button:hover {
+            background: linear-gradient(135deg, #b8860b, #e6b800);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(212, 160, 23, 0.3);
+        }
+
+        .submit-button:active {
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        .form-note {
+            background-color: var(--light);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--secondary);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .form-note i {
+            color: var(--secondary);
+            margin-right: 5px;
+        }
+
+        .contact-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Contact Page */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            animation: slideInFromLeft 0.8s ease-out;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .contact-info:hover .contact-detail {
+            transform: translateX(10px);
+        }
+
+        .contact-detail i {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            transition: transform 0.5s;
+        }
+
+        .contact-detail:hover i {
+            transform: rotate(360deg);
+        }
+
+        .contact-form {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            border: 1px solid var(--border);
+            animation: slideInFromRight 0.8s ease-out;
+        }
+
+        /* System Manager Section in Contacts */
+        .system-manager-section {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--secondary);
+        }
+
+        .system-manager-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px var(--shadow);
+            border: 1px solid var(--border);
+            max-width: 600px;
+            margin: 2rem auto;
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        .manager-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .manager-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--secondary);
+            box-shadow: 0 0 15px rgba(212, 160, 23, 0.5);
+            transition: transform 0.5s;
+        }
+
+        .system-manager-card:hover .manager-photo {
+            transform: scale(1.1);
+        }
+
+        .manager-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .manager-info h4 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .manager-info p {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .manager-info .tagline {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        .manager-contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: var(--light);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            background-color: rgba(44, 94, 140, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 3px 10px var(--shadow);
+        }
+
+        .contact-info-text h5 {
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-info-text a, .contact-info-text p {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contact-info-text a:hover {
+            color: var(--secondary);
+        }
+
+        .manager-responsibilities {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .manager-responsibilities h5 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .manager-responsibilities ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .manager-responsibilities li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .manager-responsibilities li:before {
+            content: "✓";
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .footer-logo span {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px) scale(1.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .copyright {
+            margin-top: 1rem;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .manager-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .manager-photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .registration-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                padding: 1rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                box-shadow: 0 5px 10px var(--shadow);
+            }
+
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            nav li {
+                width: 100%;
+            }
+
+            nav a {
+                display: block;
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            nav a:last-child {
+                border-bottom: none;
+            }
+
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .committee-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .member-photo {
+                height: 220px;
+            }
+            
+            .committee-structure {
+                padding: 1.5rem;
+            }
+            
+            .view-toggle {
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 1rem;
+            }
+            
+            .toggle-icons {
+                margin-left: 0;
+            }
+            
+            .social-platforms {
+                grid-template-columns: 1fr;
+            }
+            
+            .cross-platform-section {
+                padding: 1.5rem;
+            }
+
+            .marquee-item {
+                padding: 0 25px;
+                font-size: 0.9rem;
+            }
+
+            .manager-contact-details {
+                grid-template-columns: 1fr;
+            }
+
+            .system-manager-card {
+                padding: 1.5rem;
+            }
+
+            .manager-photo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .registration-form-container {
+                padding: 1.5rem;
+            }
+
+            .registration-info {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Marquee Announcement -->
+    <div class="marquee-container">
+        <div class="marquee">
+            <div class="marquee-item"><i class="fas fa-cross"></i> We have Annual Youth Ministers Conference </div>
+            <div class="marquee-item"><i class="fas fa-pray"></i> Join us in Prayer every Saturday at  2000hr-2100hrs!!!</div>
+            <div class="marquee-item"><i class="fas fa-graduation-cap"></i> Join us in a Free Ministry training!!! </div>
+            <div class="marquee-item"><i class="fas fa-hands-helping"></i>   Annual Thanks Giving and Celebration!!! </div>
+            <div class="marquee-item"><i class="fas fa-globe"></i> Now in Eswatinini- Join the movement!!!</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                     <img src="16.jpg">
+                    <i class="fas fa-cross"></i>
+                    <h1>YGMM<span>.</span></h1>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                        <li><a href="#" class="nav-link" data-page="register">Register</a></li>
+                        <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <h2>Young Gospel Ministers Movement</h2>
+                <p>Empowering the next generation of gospel ministers through discipleship, training, and community. Join us in spreading the good news of Jesus Christ to all nations.</p>
+                <a href="#" class="cta-button" data-page="register">Join YGMM Today</a>
+            </div>
+            
+            <div class="page-header">
+                <h2>Our Mission</h2>
+                <p>Equipping young ministers for effective gospel ministry in the 21st century</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-hands-praying"></i>
+                    <h3>Spiritual Formation</h3>
+                    <p>Deepening our relationship with God through prayer, worship, and study of His Word.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Ministry Training</h3>
+                    <p>Practical training in preaching, teaching, counseling, and church leadership.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-people-group"></i>
+                    <h3>Community Support</h3>
+                    <p>Building lasting relationships with fellow ministers for encouragement and accountability.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Social Media Page -->
+        <section id="social" class="page">
+            <div class="page-header">
+                <h2>Connect With YGMM Online</h2>
+                <p>Follow us across all social media platforms for daily encouragement, teaching, and ministry updates</p>
+            </div>
+            
+            <div class="social-platforms">
+                <!-- Facebook Card -->
+                <div class="platform-card">
+                    <div class="platform-header facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        <h3>Facebook</h3>
+                        <p>@YoungGospelMinistersMovement-YGMM</p>
+                    </div>
+                    <div class="platform-content">
+                        <div class="social-stats">
+                            <div class="stat">
+                                <div class="stat-value">12.5K</div>
+                                <div class="stat-label">Followers</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">245</div>
+                                <div class="stat-label">Posts</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">98%</div>
+                                <div class="stat-label">Engagement</div>
+                            </div>
+                        </div>
+                        
+                        <p>Join our Facebook community for daily devotionals, live prayer sessions, and discussions about ministry challenges and victories.</p>
+                        
+                        <div class="social-links-container">
+                            <a href="https://www.facebook.com/YoungGospelMinistersMovement-YGMM" class="social-link-btn facebook-btn" target="_blank">
+                                <i class="fab fa-facebook-f"></i> Visit Our Facebook Page
+                            </a>
+                            <a href="https://www.youtube.com/@YoungGospelMinistersMovement" class="social-link-btn youtube-btn" target="_blank">
+                                <i class="fab fa-youtube"></i> Also on YouTube
+                            </a>
+                            <a href="https://www.tiktok.com/@YoungGospelMinistersMovement" class="social-link-btn tiktok-btn" target="_blank">
+                                <i class="fab fa-tiktok"></i> Check TikTok Too
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- YouTube Card -->
+                <div class="platform-card">
+                    <div class="platform-header youtube">
+                        <i class="fab fa-youtube"></i>
+                        <h3>YouTube</h3>
+                        <p>@YoungGospelMinistersMovement</p>
+                    </div>
+                    <div class="platform-content">
+                        <div class="social-stats">
+                            <div class="stat">
+                                <div class="stat-value">8.7K</div>
+                                <div class="stat-label">Subscribers</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">156</div>
+                                <div class="stat-label">Videos</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">45K</div>
+                                <div class="stat-label">Views</div>
+                            </div>
+                        </div>
+                        
+                        <p>Watch our teaching series, conference recordings, and ministry training videos on YouTube. New content uploaded every week.</p>
+                        
+                        <div class="social-links-container">
+                            <a href="https://www.youtube.com/@YoungGospelMinistersMovement" class="social-link-btn youtube-btn" target="_blank">
+                                <i class="fab fa-youtube"></i> Visit Our YouTube Channel
+                            </a>
+                            <a href="https://www.facebook.com/YoungGospelMinistersMovement-YGMM" class="social-link-btn facebook-btn" target="_blank">
+                                <i class="fab fa-facebook-f"></i> Also on Facebook
+                            </a>
+                            <a href="https://www.tiktok.com/@YoungGospelMinistersMovement" class="social-link-btn tiktok-btn" target="_blank">
+                                <i class="fab fa-tiktok"></i> Check TikTok Too
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TikTok Card -->
+                <div class="platform-card">
+                    <div class="platform-header tiktok">
+                        <i class="fab fa-tiktok"></i>
+                        <h3>TikTok</h3>
+                        <p>@YoungGospelMinistersMovement</p>
+                    </div>
+                    <div class="platform-content">
+                        <div class="social-stats">
+                            <div class="stat">
+                                <div class="stat-value">24.3K</div>
+                                <div class="stat-label">Followers</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">189</div>
+                                <div class="stat-label">Videos</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">1.2M</div>
+                                <div class="stat-label">Likes</div>
+                            </div>
+                        </div>
+                        
+                        <p>Short, powerful messages, worship moments, and ministry insights in 60 seconds or less. Perfect for the on-the-go minister.</p>
+                        
+                        <div class="social-links-container">
+                            <a href="https://www.tiktok.com/@YoungGospelMinistersMovement" class="social-link-btn tiktok-btn" target="_blank">
+                                <i class="fab fa-tiktok"></i> Visit Our TikTok Profile
+                            </a>
+                            <a href="https://www.youtube.com/@YoungGospelMinistersMovement" class="social-link-btn youtube-btn" target="_blank">
+                                <i class="fab fa-youtube"></i> Also on YouTube
+                            </a>
+                            <a href="https://www.facebook.com/YoungGospelMinistersMovement-YGMM" class="social-link-btn facebook-btn" target="_blank">
+                                <i class="fab fa-facebook-f"></i> Check Facebook Too
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cross-Platform Integration Section -->
+            <div class="cross-platform-section">
+                <h3>Cross-Platform Experience</h3>
+                <p>Our social media platforms are fully integrated - content from one platform often appears on another!</p>
+                
+                <div class="cross-platform-grid">
+                    <div class="cross-platform-card">
+                        <h4><i class="fas fa-sync-alt"></i> Content Sharing</h4>
+                        <p>Our YouTube sermons are clipped for TikTok and discussed on Facebook Live sessions.</p>
+                    </div>
+                    
+                    <div class="cross-platform-card">
+                        <h4><i class="fas fa-users"></i> Community Engagement</h4>
+                        <p>Join discussions started on Facebook, continued on YouTube comments, and expanded on TikTok.</p>
+                    </div>
+                    
+                    <div class="cross-platform-card">
+                        <h4><i class="fas fa-bell"></i> Notifications</h4>
+                        <p>Get updates about new content across all platforms when you follow us everywhere.</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 2rem;">
+                    <a href="#" class="cta-button secondary">Follow All Platforms</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Page -->
+        <section id="about" class="page">
+            <div class="page-header">
+                <h2>About YGMM</h2>
+                <p>Learn about our vision, mission, history, and leadership team</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>The Young Gospel Ministers Movement (YGMM) was founded in 2025 by a young man of God who was led by the spirit of God assisted by a group of young ministers who saw the need for a dedicated community for emerging gospel workers. </p>
+                    <p>Our focus is on equipping the next generation of ministers with both theological depth and practical ministry skills. We believe that effective gospel ministry requires both sound doctrine and compassionate service.</p>
+                    <p>Today, YGMM serves  young ministers across denominational lines, providing resources, training, and community to help them fulfill their calling.</p>
+                </div>
+                
+                <div class="about-img">
+                    <img src="12.jpg">
+                </div>
+            </div>
+            
+            <div class="mission-vision">
+                <div class="mission">
+                    <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                    <p>To preach the pure Gospel of Christ to Humanity Leading into Conversion and Disciple them into the full stature of Christ.</p>
+                </div>
+                
+                <div class="vision">
+                    <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                    <p>To be a vibrant (interdeniminational) Movement that will inspire and equip Christian youth,To Embrace and spread the pure Gospel of Christ,Pursuing righteousiness in all they do and becoming agents of change in the great and last revival</p>
+                </div>
+            </div>
+            
+            <!-- COMMITTEE MEMBERS SECTION -->
+            <div class="committee-section">
+                <div class="committee-header">
+                    <h3>Our Leadership Committee</h3>
+                    <p>Meet the dedicated team guiding the Young Gospel Ministers Movement</p>
+                </div>
+                
+                <!-- View Toggle -->
+                <div class="view-toggle">
+                    <span class="toggle-label">View as:</span>
+                    <div class="toggle-icons">
+                        <i class="fas fa-th-large active-icon" id="gridIcon"></i>
+                        <i class="fas fa-list" id="listIcon"></i>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="viewToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <!-- Committee Grid with Actual Images -->
+                <div class="committee-grid" id="committeeGrid">
+                    <!-- Committee Member 1 -->
+                    <div class="committee-card">
+                        <div class="member-photo">
+                            <img src="1.jpg">
+                        </div>
+                        <div class="member-details">
+                            <h4 class="member-name">Bongumenzi Maseko</h4>
+                            <div class="member-role">Director</div>
+                            <p class="member-bio">Founder of YGMM</p>
+                            <div class="member-contact">
+                                <a href="bongumenzimasekoygmm03@gmail.com" class="contact-icon" title="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                                <a href="#" class="contact-icon" title="Phone">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Committee Member 2 -->
+                    <div class="committee-card">
+                        <div class="member-photo">
+                            <img src="2.jpg">
+                        </div>
+                        <div class="member-details">
+                            <h4 class="member-name">Sive Msibi</h4>
+                            <div class="member-role">Assistant Director</div>
+                            <div class="member-contact">
+                                <a href="sivemsibiygmm03@gmail.com" class="contact-icon" title="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                                <a href="#" class="contact-icon" title="Phone">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Committee Member 3 -->
+                    <div class="committee-card">
+                        <div class="member-photo">
+                            <img src="3.jpg">
+                        </div>
+                        <div class="member-details">
+                            <h4 class="member-name">Mangaliso Dladla</h4>
+                            <div class="member-role">Treasurer</div>
+                           <div class="member-contact">
+                                <a href="mangalisodladlaygmm03@gmail.com" class="contact-icon" title="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                                <a href="#" class="contact-icon" title="Phone">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Committee Member 4 -->
+                    <div class="committee-card">
+                        <div class="member-photo">
+                            <img src="4.jpg">
+                        </div>
+                        <div class="member-details">
+                            <h4 class="member-name">Wandile Seyama</h4>
+                            <div class="member-role">Evangelism Coordinator</div>
+                            
+                            <div class="member-contact">
+                                <a href="wandileseyamaygmm03@gmail.com" class="contact-icon" title="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                                <a href="#" class="contact-icon" title="Phone">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Committee Member 5 -->
+                    <div class="committee-card">
+                        <div class="member-photo">
+                            <img src="5.jpg">
+                        </div>
+                        <div class="member-details">
+                            <h4 class="member-name">Sikoluhle Dlamini</h4>
+                            <div class="member-role">Youth Welfare Coordinator </div>
+                            
+                            <div class="member-contact">
+                                <a href="sikoluhledlaminiygmm03@gmail.com" class="contact-icon" title="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                                <a href="#" class="contact-icon" title="Phone">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Committee Member 6 -->
+                    <div class="committee-card">
+                        <div class="member-photo">
+                            <img src="6.jpg">
+                        </div>
+                        <div class="member-details">
+                            <h4 class="member-name">Mlungisis Mayisela</h4>
+                            <div class="member-role">Discipleshirp Coordinator</div>
+                            
+                            <div class="member-contact">
+                                <a href="mlungisimayiselaygmm03@gmail.com" class="contact-icon" title="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                                <a href="#" class="contact-icon" title="Phone">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Committee Member 7 -->
+                    <div class="committee-card">
+                        <div class="member-photo">
+                            <img src="7.jpg">
+                        </div>
+                        <div class="member-details">
+                            <h4 class="member-name">Moses Motsa</h4>
+                            <div class="member-role">Praise & worshirp Coordinator</div>
+                           
+                            <div class="member-contact">
+                                <a href="mosesmotsaygmm03@gmail.com" class="contact-icon" title="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                                <a href="#" class="contact-icon" title="Phone">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Committee Member 8 -->
+                    <div class="committee-card">
+                        <div class="member-photo">
+                            <img src="8.jpg">
+                        </div>
+                        <div class="member-details">
+                            <h4 class="member-name">Welile Kunene</h4>
+                            <div class="member-role">Secretary</div>
+                           
+                            <div class="member-contact">
+                                <a href="welilekuneneygmm03@gmail.com" class="contact-icon" title="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                                <a href="#" class="contact-icon" title="Phone">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Committee Member 9 -->
+                    <div class="committee-card">
+                        <div class="member-photo">
+                            <img src="9.jpg">
+                        </div>
+                        <div class="member-details">
+                            <h4 class="member-name">Shabangu Thembinkosi</h4>
+                            <div class="member-role">Media Coordinator</div>
+                            
+                            <div class="member-contact">
+                                <a href="thembinkosishabangu03@gmail.com" class="contact-icon" title="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                                <a href="76786862" class="contact-icon" title="Phone">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Committee Structure -->
+                <div class="committee-structure">
+                    <h3 style="text-align: center; color: var(--primary); margin-bottom: 1rem;">Our Committee Structure</h3>
+                    <p style="text-align: center; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                        The YGMM leadership committee operates through specialized departments, each focusing on key areas of ministry development and support.
+                    </p>
+                    
+                    <div class="structure-grid">
+                        <div class="department">
+                            <h4><i class="fas fa-graduation-cap"></i> Training Department</h4>
+                            <ul>
+                                <li>Ministry Skills Development</li>
+                                <li>Theological Education</li>
+                                <li>Leadership Training</li>
+                                <li>Workshop Coordination</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="department">
+                            <h4><i class="fas fa-hands-praying"></i> Spiritual Formation</h4>
+                            <ul>
+                                <li>Prayer Networks</li>
+                                <li>Retreat Planning</li>
+                                <li>Mentorship Programs</li>
+                                <li>Accountability Groups</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="department">
+                            <h4><i class="fas fa-users"></i> Community & Outreach</h4>
+                            <ul>
+                                <li>Chapter Coordination</li>
+                                <li>Evangelism Initiatives</li>
+                                <li>Community Service</li>
+                                <li>Member Support</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="department">
+                            <h4><i class="fas fa-toolbox"></i> Resources & Media</h4>
+                            <ul>
+                                <li>Digital Library Management</li>
+                                <li>Content Creation</li>
+                                <li>Online Platform Development</li>
+                                <li>Media Production</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Optional: Add a note about the images -->
+                <div class="placeholder-instructions">
+                    <h4><i class="fas fa-image"></i> Committee Member Photos</h4>
+                    <p>All committee member images are sourced from Unsplash and represent the diversity and commitment of our leadership team.</p>
+                    <ul>
+                        <li>Images show real committee members who serve in various capacities within YGMM</li>
+                        <li>Each member brings unique gifts and experiences to the movement</li>
+                        <li>Contact information is provided for ministry-related inquiries</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Events Page -->
+        <section id="events" class="page">
+            <div class="page-header">
+                <h2>Upcoming Events</h2>
+                <p>Join us for these upcoming gatherings and training sessions</p>
+            </div>
+            
+            <div class="events-list">
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">15</span>
+                        <span class="month">June 2023</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Annual Youth Ministers Conference</h3>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Grace Cathedral, New York</span>
+                        </div>
+                        <p>A three-day conference focused on effective youth ministry in the digital age. Featuring workshops, worship sessions, and networking opportunities.</p>
+                        <a href="#" class="cta-button" style="margin-top: 1rem; padding: 0.5rem 1.5rem; font-size: 0.9rem;">Register Now</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">22</span>
+                        <span class="month">July 2023</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Preaching Workshop</h3>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Online Event</span>
+                        </div>
+                        <p>Learn how to prepare and deliver engaging, biblical sermons. This interactive workshop includes practical exercises and feedback from experienced preachers.</p>
+                        <a href="#" class="cta-button" style="margin-top: 1rem; padding: 0.5rem 1.5rem; font-size: 0.9rem;">Register Now</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">10</span>
+                        <span class="month">August 2023</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Regional Retreat</h3>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Lakeview Retreat Center</span>
+                        </div>
+                        <p>A weekend retreat for young ministers focusing on spiritual renewal, fellowship, and strategic planning for ministry in the coming year.</p>
+                        <a href="#" class="cta-button" style="margin-top: 1rem; padding: 0.5rem 1.5rem; font-size: 0.9rem;">Register Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="page-header" style="margin-top: 4rem;">
+                <h3>Past Events</h3>
+                <p>Check out recordings and resources from our previous events</p>
+            </div>
+            
+            <div class="events-list">
+                <div class="event-card">
+                    <div class="event-date" style="background-color: var(--dark);">
+                        <span class="day">12</span>
+                        <span class="month">May 2023</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Leadership Summit</h3>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Chicago, IL</span>
+                        </div>
+                        <p>A gathering focused on developing leadership skills for young ministers. Recordings available for members.</p>
+                        <a href="#" class="cta-button secondary" style="margin-top: 1rem; padding: 0.5rem 1.5rem; font-size: 0.9rem;">Watch Recording</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date" style="background-color: var(--dark);">
+                        <span class="day">28</span>
+                        <span class="month">April 2023</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Prayer & Fasting Conference</h3>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Online Event</span>
+                        </div>
+                        <p>A virtual conference focused on deepening prayer life and understanding spiritual disciplines.</p>
+                        <a href="#" class="cta-button secondary" style="margin-top: 1rem; padding: 0.5rem 1.5rem; font-size: 0.9rem;">Watch Recording</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Resources Page -->
+        <section id="resources" class="page">
+            <div class="page-header">
+                <h2>Ministry Resources</h2>
+                <p>Tools and materials to support your ministry journey</p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-book-bible"></i>
+                    <h3>Study Materials</h3>
+                    <p>Comprehensive Bible study guides and theological resources for personal growth and sermon preparation.</p>
+                    <ul>
+                        <li>Expository preaching guides</li>
+                        <li>Theology 101 course</li>
+                        <li>Bible reading plans</li>
+                        <li>Commentary recommendations</li>
+                        <li>Sermon outline templates</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="margin-top: 1.5rem;">Access Study Materials</a>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Library</h3>
+                    <p>Access our growing library of teaching videos, conference recordings, and ministry training sessions.</p>
+                    <ul>
+                        <li>Conference messages</li>
+                        <li>Leadership training</li>
+                        <li>Pastoral counseling</li>
+                        <li>Ministry skills development</li>
+                        <li>Worship leading tutorials</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="margin-top: 1.5rem;">Browse Video Library</a>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>Downloadable Resources</h3>
+                    <p>Practical tools and templates to help you in various aspects of ministry administration and planning.</p>
+                    <ul>
+                        <li>Sermon planning templates</li>
+                        <li>Ministry budgeting guides</li>
+                        <li>Discipleship worksheets</li>
+                        <li>Event planning checklists</li>
+                        <li>Volunteer management forms</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="margin-top: 1.5rem;">Download Resources</a>
+                </div>
+            </div>
+            
+            <div class="page-header" style="margin-top: 4rem;">
+                <h3>Additional Resources</h3>
+                <p>More tools to support your ministry</p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-podcast"></i>
+                    <h3>Podcasts & Audio</h3>
+                    <p>Listen to our podcast series and audio teachings on the go.</p>
+                    <ul>
+                        <li>Weekly ministry insights</li>
+                        <li>Interview with experienced ministers</li>
+                        <li>Audio versions of sermons</li>
+                        <li>Ministry Q&A sessions</li>
+                    </ul>
+                    <a href="#" class="cta-button secondary" style="margin-top: 1.5rem;">Listen Now</a>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community Forums</h3>
+                    <p>Connect with other ministers, ask questions, and share experiences.</p>
+                    <ul>
+                        <li>Discussion boards</li>
+                        <li>Prayer request section</li>
+                        <li>Ministry advice forum</li>
+                        <li>Resource sharing</li>
+                    </ul>
+                    <a href="#" class="cta-button secondary" style="margin-top: 1.5rem;">Join Community</a>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Event Calendar</h3>
+                    <p>Stay updated with all upcoming YGMM events and activities.</p>
+                    <ul>
+                        <li>Monthly events schedule</li>
+                        <li>Registration deadlines</li>
+                        <li>Event preparation guides</li>
+                        <li>Travel information</li>
+                    </ul>
+                    <a href="#" class="cta-button secondary" style="margin-top: 1.5rem;">View Calendar</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Registration Page -->
+        <section id="register" class="page">
+            <div class="page-header">
+                <h2>Join Young Gospel Ministers Movement</h2>
+                <p>Become a member and access exclusive resources, training, and community support</p>
+            </div>
+            
+            <div class="registration-container">
+                <div class="registration-info">
+                    <h3>Free Membership Benefits</h3>
+                    <p>YGMM is committed to supporting young ministers without financial barriers. Our membership is completely free to ensure everyone can access the resources they need.</p>
+                    
+                    <div class="free-badge">COMPLETELY FREE MEMBERSHIP</div>
+                    
+                    <ul class="benefit-list">
+                        <li><strong>Complete Resource Access:</strong> Full library of training materials, sermon outlines, and ministry tools at no cost</li>
+                        <li><strong>Community Networking:</strong> Connect with fellow young ministers across denominations and regions</li>
+                        <li><strong>Mentorship Matching:</strong> Be paired with an experienced minister for guidance and support</li>
+                        <li><strong>Event Participation:</strong> Access to most YGMM conferences, workshops, and retreats</li>
+                        <li><strong>Monthly Training:</strong> Live webinars on relevant ministry topics</li>
+                        <li><strong>Prayer Network:</strong> Join our prayer community and have our team pray for your ministry</li>
+                        <li><strong>Ministry Support:</strong> Guidance for challenging ministry situations and decisions</li>
+                        <li><strong>Leadership Development:</strong> Training to help you grow as a spiritual leader</li>
+                    </ul>
+                    
+                    <div style="margin-top: 2rem; background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px;">
+                        <h4><i class="fas fa-heart" style="color: var(--secondary); margin-right: 10px;"></i> Supported by Generous Donors</h4>
+                        <p>YGMM is made possible through the generous support of churches, organizations, and individuals who believe in investing in the next generation of gospel ministers.</p>
+                    </div>
+                </div>
+                
+                <div class="registration-form-container">
+                    <div class="form-success" id="successMessage">
+                        <h3><i class="fas fa-check-circle"></i> Registration Successful!</h3>
+                        <p>Thank you for registering with YGMM! Your membership is now active. We've sent a welcome email with further instructions and login details for our member portal.</p>
+                    </div>
+                    
+                    <div class="form-header">
+                        <h4>Ministry Registration Form</h4>
+                        <p>Please complete all sections below to register for free YGMM membership</p>
+                    </div>
+                    
+                    <form id="registrationForm">
+                        <!-- Personal Information Section -->
+                        <div class="form-section">
+                            <div class="section-title">
+                                <i class="fas fa-user"></i>
+                                <span>Personal Information</span>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName" class="required">First Name</label>
+                                    <input type="text" id="firstName" required placeholder="Enter your first name">
+                                    <div class="form-error" id="firstNameError">Please enter your first name</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="lastName" class="required">Last Name</label>
+                                    <input type="text" id="lastName" required placeholder="Enter your last name">
+                                    <div class="form-error" id="lastNameError">Please enter your last name</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email" class="required">Email Address</label>
+                                    <input type="email" id="email" required placeholder="your.email@example.com">
+                                    <div class="form-error" id="emailError">Please enter a valid email address</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone" class="required">Phone Number</label>
+                                    <input type="tel" id="phone" required placeholder="268 79322043">
+                                    <div class="form-error" id="phoneError">Please enter a valid phone number</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="ageGroup">Age Group</label>
+                                <select id="ageGroup">
+                                    <option value="">Select your age group</option>
+                                    <option value="18-25">18-25 years</option>
+                                    <option value="26-35">26-35 years</option>
+                                    <option value="36-45">36-45 years</option>
+                                    <option value="46+">46+ years</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="location" class="required">City & Country</label>
+                                <input type="text" id="location" required placeholder="e.g., Mbabane Eswatini,or Mankayane Eswatini">
+                                <div class="form-error" id="locationError">Please enter your location</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Ministry Information Section -->
+                        <div class="form-section">
+                            <div class="section-title">
+                                <i class="fas fa-church"></i>
+                                <span>Ministry & Church Information</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="churchName" class="required">Church/Ministry Name</label>
+                                <input type="text" id="churchName" required placeholder="Enter the name of your church or ministry">
+                                <div class="form-error" id="churchNameError">Please enter your church or ministry name</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="churchAddress">Church Address (Optional)</label>
+                                <input type="text" id="churchAddress" placeholder=" Mbabane Mahwalala zone 6 ,Mbabane North">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="churchWebsite">Church Website (Optional)</label>
+                                <input type="url" id="churchWebsite" placeholder="https://yourchurch.org">
+                            </div>
+                            
+                            <div class="contact-details-grid">
+                                <div class="form-group">
+                                    <label for="pastorName" class="required">Pastor's/Supervisor's Name</label>
+                                    <input type="text" id="pastorName" required placeholder="Full name of your pastor/supervisor">
+                                    <div class="form-error" id="pastorNameError">Please enter your pastor's name</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="pastorEmail" class="required">Pastor's/Supervisor's Email</label>
+                                    <input type="email" id="pastorEmail" required placeholder="pastor@church.org">
+                                    <div class="form-error" id="pastorEmailError">Please enter a valid email address</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="pastorPhone" class="required">Pastor's/Supervisor's Phone</label>
+                                    <input type="tel" id="pastorPhone" required placeholder="268 79322043">
+                                    <div class="form-error" id="pastorPhoneError">Please enter a valid phone number</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="denomination">Denomination/Affiliation</label>
+                                <input type="text" id="denomination" placeholder="e.g., Baptist, Pentecostal, Non-denominational, Independent">
+                            </div>
+                        </div>
+                        
+                        <!-- Ministry Role & Experience Section -->
+                        <div class="form-section">
+                            <div class="section-title">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Ministry Role & Experience</span>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="role" class="required">Primary Ministry Role</label>
+                                    <select id="role" required>
+                                        <option value="">Select your primary role</option>
+                                        <option value="senior-pastor">Senior Pastor</option>
+                                        <option value="associate-pastor">Associate Pastor</option>
+                                        <option value="youth-pastor">Youth Pastor</option>
+                                        <option value="worship-leader">Worship Leader</option>
+                                        <option value="evangelist">Evangelist</option>
+                                        <option value="missionary">Missionary</option>
+                                        <option value="minister">Minister</option>
+                                        <option value="seminary-student">Seminary Student</option>
+                                        <option value="lay-leader">Lay Leader</option>
+                                        <option value="church-staff">Church Staff</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <div class="form-error" id="roleError">Please select your ministry role</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="experience" class="required">Years in Ministry</label>
+                                    <select id="experience" required>
+                                        <option value="">Select experience</option>
+                                        <option value="just-starting">Just Starting (0-1 years)</option>
+                                        <option value="1-3">1-3 years</option>
+                                        <option value="3-5">3-5 years</option>
+                                        <option value="5-10">5-10 years</option>
+                                        <option value="10+">10+ years</option>
+                                    </select>
+                                    <div class="form-error" id="experienceError">Please select your years of experience</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="education">Educational Background (Optional)</label>
+                                <select id="education">
+                                    <option value="">Select highest level</option>
+                                    <option value="high-school">High School Diploma</option>
+                                    <option value="associate">Associate Degree</option>
+                                    <option value="bachelor">Bachelor's Degree</option>
+                                    <option value="master">Master's Degree</option>
+                                    <option value="mdiv">M.Div. (Master of Divinity)</option>
+                                    <option value="doctoral">Doctoral Degree</option>
+                                    <option value="none">No Formal Theological Education</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="expectations">Ministry Goals & Expectations</label>
+                                <textarea id="expectations" placeholder="Briefly describe your ministry vision, challenges you're facing, and what you hope to gain from YGMM membership..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional Information Section -->
+                        <div class="form-section">
+                            <div class="section-title">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Additional Information</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="referral">How did you hear about YGMM?</label>
+                                <select id="referral">
+                                    <option value="">Select referral source</option>
+                                    <option value="friend">Friend/Colleague</option>
+                                    <option value="social-media">Social Media</option>
+                                    <option value="conference">Conference/Event</option>
+                                    <option value="website">Website</option>
+                                    <option value="pastor">My Pastor</option>
+                                    <option value="church">Church Announcement</option>
+                                    <option value="search">Online Search</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="skills">Special Skills or Areas of Interest (Optional)</label>
+                                <textarea id="skills" placeholder="e.g., Preaching, Counseling, Worship, Youth Ministry, Administration, etc."></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Agreement Section -->
+                        <div class="form-section">
+                            <div class="section-title">
+                                <i class="fas fa-file-signature"></i>
+                                <span>Membership Agreement</span>
+                            </div>
+                            
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="agreement" required>
+                                <label for="agreement" class="required">
+                                    I have read and agree to the <a href="#" style="color: var(--primary); text-decoration: underline;">YGMM Membership Covenant</a> and <a href="#" style="color: var(--primary); text-decoration: underline;">Statement of Faith</a>. I understand that YGMM is an interdenominational movement committed to biblical truth and gospel ministry.
+                                </label>
+                            </div>
+                            <div class="form-error" id="agreementError">You must agree to the membership terms</div>
+                            
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="pastorApproval" required>
+                                <label for="pastorApproval" class="required">
+                                    I confirm that my pastor/supervisor is aware of my application to YGMM and supports my participation in this ministry movement.
+                                </label>
+                            </div>
+                            <div class="form-error" id="pastorApprovalError">Pastoral approval is required</div>
+                            
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="newsletter" checked>
+                                <label for="newsletter">
+                                    Yes, I would like to receive the YGMM monthly newsletter, ministry updates, and event notifications.
+                                </label>
+                            </div>
+                            
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="prayer">
+                                <label for="prayer">
+                                    Yes, I would like to join the YGMM prayer network and receive prayer requests from other ministers.
+                                </label>
+                            </div>
+                            
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="volunteer">
+                                <label for="volunteer">
+                                    I'm interested in volunteering opportunities with YGMM (events, committees, mentoring, etc.).
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-note">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <strong>Note:</strong> All information provided will be kept confidential and used only for YGMM membership purposes. Your pastor's contact information is required for verification and to ensure pastoral support for your ministry development.
+                        </div>
+                        
+                        <button type="submit" class="submit-button">
+                            <i class="fas fa-paper-plane"></i> Submit Registration
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Page -->
+        <section id="contact" class="page">
+            <div class="page-header">
+                <h2>Contact Us</h2>
+                <p>Get in touch with the YGMM leadership team</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Our HQ</h4>
+                            <p>Mbabane</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone Number</h4>
+                            <p>+268 79292981</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email Address</h4>
+                            <p>younggospelministersmovement@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Office Hours</h4>
+                            <p>Monday - Friday: 9am - 5pm</p>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin-top: 2rem;">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/YoungGospelMinistersMovement-YGMM" target="_blank" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@YoungGospelMinistersMovement" target="_blank" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@YoungGospelMinistersMovement" target="_blank" title="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName">Full Name</label>
+                            <input type="text" id="contactName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address</label>
+                            <input type="email" id="contactEmail" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactSubject">Subject</label>
+                            <input type="text" id="contactSubject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactMessage">Message</label>
+                            <textarea id="contactMessage" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- System Manager Section in Contacts -->
+            <div class="system-manager-section">
+                <div class="page-header">
+                    <h3>System Manager & Technical Support</h3>
+                    <p>Contact our technical director for website support, technical issues, and system inquiries</p>
+                </div>
+                
+                <div class="system-manager-card">
+                    <div class="manager-header">
+                        <div class="manager-photo">
+                            <img src="9.jpg">
+                        </div>
+                        <div class="manager-info">
+                            <h4>Mr Shabangu Thembinkosi</h4>
+                            <p>System Manager & Technical Director</p>
+                            <p class="tagline">"Ensuring seamless digital experience for all YGMM members"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="manager-contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-info-text">
+                                <h5>Email</h5>
+                                <a href="mailto:david.johnson@ygmm.org">thembinkosishabangu03@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-info-text">
+                                <h5>Phone</h5>
+                                <a href="tel:+15551234567">+268 79322043</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="contact-info-text">
+                                <h5>Support Hours</h5>
+                                <p>Mon-Fri: 9am-6pm EST</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-headset"></i>
+                            <div class="contact-info-text">
+                                <h5>Emergency Support</h5>
+                                <a href="tel:+15551234568">+268 76786862</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="manager-responsibilities">
+                        <h5><i class="fas fa-tasks"></i> Areas of Responsibility</h5>
+                        <ul>
+                            <li>Website maintenance and updates</li>
+                            <li>Technical support for members</li>
+                            <li>Online platform management</li>
+                            <li>Digital security and data protection</li>
+                            <li>IT infrastructure oversight</li>
+                            <li>Technical training for staff</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">YGMM<span>.</span></div>
+                <p>Young Gospel Ministers Movement - Equipping the next generation for effective gospel ministry</p>
+                
+                <div class="social-links">
+                    <a href="https://www.facebook.com/YoungGospelMinistersMovement-YGMM" target="_blank" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@YoungGospelMinistersMovement" target="_blank" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@YoungGospelMinistersMovement" target="_blank" title="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+                
+                <div class="copyright">
+                    <p>&copy; 2023 Young Gospel Ministers Movement. All rights reserved.</p>
+                    <p>Membership is free and supported by generous donors.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Page navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const targetPage = link.getAttribute('data-page');
+                
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                link.classList.add('active');
+                
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                    if (page.id === targetPage) {
+                        page.classList.add('active');
+                    }
+                });
+                
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+                
+                window.scrollTo(0, 0);
+            });
+        });
+        
+        // Committee View Toggle
+        const viewToggle = document.getElementById('viewToggle');
+        if (viewToggle) {
+            const committeeGrid = document.getElementById('committeeGrid');
+            const gridIcon = document.getElementById('gridIcon');
+            const listIcon = document.getElementById('listIcon');
+            
+            // Create list view container if it doesn't exist
+            let committeeList = document.getElementById('committeeList');
+            if (!committeeList) {
+                committeeList = document.createElement('div');
+                committeeList.id = 'committeeList';
+                committeeList.className = 'committee-list hidden';
+                committeeGrid.parentNode.insertBefore(committeeList, committeeGrid.nextSibling);
+                
+                // Copy committee cards to list view
+                const cards = committeeGrid.querySelectorAll('.committee-card');
+                cards.forEach(card => {
+                    const listItem = card.cloneNode(true);
+                    listItem.classList.add('list-view');
+                    committeeList.appendChild(listItem);
+                });
+            }
+            
+            viewToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    committeeGrid.classList.add('hidden');
+                    committeeList.classList.remove('hidden');
+                    gridIcon.classList.remove('active-icon');
+                    listIcon.classList.add('active-icon');
+                } else {
+                    committeeGrid.classList.remove('hidden');
+                    committeeList.classList.add('hidden');
+                    gridIcon.classList.add('active-icon');
+                    listIcon.classList.remove('active-icon');
+                }
+            });
+        }
+        
+        // Social media navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const socialButtons = document.querySelectorAll('[data-page="social"]');
+            
+            socialButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    
+                    const socialNavLink = document.querySelector('nav a[data-page="social"]');
+                    if (socialNavLink) {
+                        socialNavLink.classList.add('active');
+                    }
+                    
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                        if (page.id === 'social') {
+                            page.classList.add('active');
+                        }
+                    });
+                    
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                    
+                    window.scrollTo(0, 0);
+                });
+            });
+            
+            // Enhanced Registration form validation
+            const registrationForm = document.getElementById('registrationForm');
+            if (registrationForm) {
+                registrationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form elements
+                    const formElements = {
+                        firstName: document.getElementById('firstName'),
+                        lastName: document.getElementById('lastName'),
+                        email: document.getElementById('email'),
+                        phone: document.getElementById('phone'),
+                        location: document.getElementById('location'),
+                        churchName: document.getElementById('churchName'),
+                        pastorName: document.getElementById('pastorName'),
+                        pastorEmail: document.getElementById('pastorEmail'),
+                        pastorPhone: document.getElementById('pastorPhone'),
+                        role: document.getElementById('role'),
+                        experience: document.getElementById('experience'),
+                        agreement: document.getElementById('agreement'),
+                        pastorApproval: document.getElementById('pastorApproval')
+                    };
+                    
+                    let isValid = true;
+                    
+                    // Reset errors
+                    document.querySelectorAll('.form-error').forEach(error => {
+                        error.style.display = 'none';
+                        error.previousElementSibling.classList.remove('error');
+                    });
+                    
+                    // Validate each required field
+                    const validateField = (field, fieldName, errorId) => {
+                        if (!field.value.trim()) {
+                            document.getElementById(errorId).style.display = 'block';
+                            field.classList.add('error');
+                            isValid = false;
+                            return false;
+                        }
+                        return true;
+                    };
+                    
+                    // Personal Information Validation
+                    validateField(formElements.firstName, 'First Name', 'firstNameError');
+                    validateField(formElements.lastName, 'Last Name', 'lastNameError');
+                    
+                    if (!formElements.email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formElements.email.value)) {
+                        document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                        document.getElementById('emailError').style.display = 'block';
+                        formElements.email.classList.add('error');
+                        isValid = false;
+                    }
+                    
+                    if (!formElements.phone.value.trim() || formElements.phone.value.length < 7) {
+                        document.getElementById('phoneError').style.display = 'block';
+                        formElements.phone.classList.add('error');
+                        isValid = false;
+                    }
+                    
+                    validateField(formElements.location, 'Location', 'locationError');
+                    
+                    // Church Information Validation
+                    validateField(formElements.churchName, 'Church Name', 'churchNameError');
+                    validateField(formElements.pastorName, "Pastor's Name", 'pastorNameError');
+                    
+                    if (!formElements.pastorEmail.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formElements.pastorEmail.value)) {
+                        document.getElementById('pastorEmailError').textContent = 'Please enter a valid email address';
+                        document.getElementById('pastorEmailError').style.display = 'block';
+                        formElements.pastorEmail.classList.add('error');
+                        isValid = false;
+                    }
+                    
+                    if (!formElements.pastorPhone.value.trim() || formElements.pastorPhone.value.length < 7) {
+                        document.getElementById('pastorPhoneError').style.display = 'block';
+                        formElements.pastorPhone.classList.add('error');
+                        isValid = false;
+                    }
+                    
+                    // Ministry Information Validation
+                    validateField(formElements.role, 'Ministry Role', 'roleError');
+                    validateField(formElements.experience, 'Years of Experience', 'experienceError');
+                    
+                    // Agreement Validation
+                    if (!formElements.agreement.checked) {
+                        document.getElementById('agreementError').style.display = 'block';
+                        isValid = false;
+                    }
+                    
+                    if (!formElements.pastorApproval.checked) {
+                        document.getElementById('pastorApprovalError').style.display = 'block';
+                        isValid = false;
+                    }
+                    
+                    if (isValid) {
+                        // Show loading state
+                        const submitBtn = registrationForm.querySelector('button[type="submit"]');
+                        const originalText = submitBtn.innerHTML;
+                        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                        submitBtn.disabled = true;
+                        
+                        // Simulate API call (in real implementation, this would be an actual API call)
+                        setTimeout(() => {
+                            // Show success message
+                            const successMessage = document.getElementById('successMessage');
+                            successMessage.classList.add('show');
+                            
+                            // Reset form
+                            registrationForm.reset();
+                            
+                            // Reset button
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                            
+                            // Scroll to success message
+                            successMessage.scrollIntoView({ behavior: 'smooth' });
+                            
+                            // Hide after 10 seconds
+                            setTimeout(() => {
+                                successMessage.classList.remove('show');
+                            }, 10000);
+                            
+                            // In a real application, you would send the data to a server here
+                            // Example: sendToServer(formData);
+                            
+                        }, 2000);
+                    }
+                });
+            }
+            
+            // Contact form
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('contactName').value;
+                    const email = document.getElementById('contactEmail').value;
+                    
+                    // Show success message
+                    alert(`Thank you, ${name}! Your message has been sent. We'll respond to you at ${email} as soon as possible.`);
+                    
+                    // Reset the form
+                    contactForm.reset();
+                });
+            }
+            
+            // CTA buttons
+            const ctaButtons = document.querySelectorAll('.cta-button');
+            ctaButtons.forEach(button => {
+                if (button.hasAttribute('data-page')) {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const targetPage = this.getAttribute('data-page');
+                        
+                        navLinks.forEach(navLink => navLink.classList.remove('active'));
+                        const targetNavLink = document.querySelector(`nav a[data-page="${targetPage}"]`);
+                        if (targetNavLink) {
+                            targetNavLink.classList.add('active');
+                        }
+                        
+                        pages.forEach(page => {
+                            page.classList.remove('active');
+                            if (page.id === targetPage) {
+                                page.classList.add('active');
+                            }
+                        });
+                        
+                        if (mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                            const icon = mobileMenuBtn.querySelector('i');
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                        
+                        window.scrollTo(0, 0);
+                    });
+                }
+            });
+
+            // Add animation to elements when they come into view
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animated elements
+            document.querySelectorAll('.feature-card, .committee-card, .platform-card, .event-card, .resource-card, .system-manager-card').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
